@@ -1,34 +1,119 @@
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputLeftAddon,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Radio,
+  RadioGroup,
+  Select,
+  Stack,
+  useDisclosure,
+} from "@chakra-ui/react";
 import React from "react";
 
-const AddProduct = () => {
-  // TODO: Remove below const and instead import them from chakra
-  const Button = () => <div />;
-  const Modal = () => <div />;
-  const ModalBody = () => <div />;
-  const Input = () => <div />;
-  const Select = () => <div />;
-  const RadioGroup = () => <div />;
-  const Radio = () => <div />;
+const AddProduct = ({
+  title,
+  setTitle,
+  category,
+  setCategory,
+  gender,
+  setGender,
+  price,
+  setPrice,
+  addProduct,
+}) => {
+  const { onOpen, isOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Button my={4} data-cy="add-product-button"></Button>
-      <Modal>
-        <ModalBody pb={6}>
-          <Input data-cy="add-product-title" />
-          <Select data-cy="add-product-category">
-            <option data-cy="add-product-category-shirt"></option>
-            <option data-cy="add-product-category-pant"></option>
-            <option data-cy="add-product-category-jeans"></option>
-          </Select>
-          <RadioGroup data-cy="add-product-gender">
-            <Radio data-cy="add-product-gender-male"></Radio>
-            <Radio data-cy="add-product-gender-female"></Radio>
-            <Radio data-cy="add-product-gender-unisex"></Radio>
-          </RadioGroup>
-          <Input data-cy="add-product-price" />
-          <Button data-cy="add-product-submit-button"></Button>
-        </ModalBody>
+      <Button
+        onClick={onOpen}
+        colorScheme="blackAlpha"
+        variant="outline"
+        color="white"
+      >
+        Add Product
+      </Button>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Add Your Product</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <FormControl display="flex" flexDirection="column" gap="18px">
+              <Box>
+                <FormLabel>Product Name</FormLabel>
+                <Input
+                  placeholder="Enter Product Name"
+                  required
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </Box>
+              <Box>
+                <FormLabel>Category</FormLabel>
+                <Select
+                  placeholder="Select Category"
+                  required
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  <option value="pant">Pant</option>
+                  <option value="shirt">Shirt</option>
+                  <option value="jeans">Jeans</option>
+                </Select>
+              </Box>
+              <RadioGroup value={gender} onChange={setGender}>
+                <Stack spacing={5} direction="row">
+                  <Radio colorScheme="blue" value="male">
+                    Male
+                  </Radio>
+                  <Radio colorScheme="pink" value="female">
+                    Female
+                  </Radio>
+                  <Radio colorScheme="gray" value="unisex">
+                    Unisex
+                  </Radio>
+                </Stack>
+              </RadioGroup>
+              <Box>
+                <FormLabel>Enter price</FormLabel>
+                <InputGroup>
+                  <InputLeftAddon children="₹" />
+                  <Input
+                    type="number"
+                    placeholder="Enter Price"
+                    required
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                  />
+                </InputGroup>
+              </Box>
+            </FormControl>
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              variant="outline"
+              colorScheme="green"
+              onClick={() => addProduct()}
+              disabled={
+                title === "" || category === "" || gender === "" || price === ""
+              }
+            >
+              Confirm
+            </Button>
+          </ModalFooter>
+        </ModalContent>
       </Modal>
     </>
   );

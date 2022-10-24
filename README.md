@@ -4,7 +4,6 @@
 
 **_Note_**: Make sure you start `json-server` on `8080` port with provided `db.json` file, then only you will be able to see data on this website.
 
-## [Video Explanation](https://masai-course.s3.ap-south-1.amazonaws.com/problem/rct-101/rct-101.e1.mp4)
 
 ## Getting Started
 
@@ -75,12 +74,4 @@
 
 **Note** - This might not be all the things, you are free to use other components.
 
-#### Submission
 
-- You need to Submit Github Link as well as netify link.
-- Make sure you use masai github account provided by MasaiSchool(submit link to root folder of your repository on github).
-- Make Sure you have netify account, else you will be getting zero marks as netify takes down your app in few days if your account does not exist.
-
-TEST 1...
-Test 2...
-Test 3...
