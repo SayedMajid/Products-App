@@ -95,6 +95,38 @@
       "imageSrc": "https://picsum.photos/seed/picsum6/420/260",
       "price": "1499",
       "id": 12
+    },
+    {
+      "title": "Armani",
+      "category": "shirt",
+      "gender": "male",
+      "imageSrc": "https://picsum.photos/seed/picsum6/420/260",
+      "price": "1200",
+      "id": 13
+    },
+    {
+      "title": "WRONG",
+      "category": "pant",
+      "gender": "male",
+      "imageSrc": "https://picsum.photos/seed/picsum6/420/260",
+      "price": "2499",
+      "id": 14
+    },
+    {
+      "title": "HRX",
+      "category": "jeans",
+      "gender": "male",
+      "imageSrc": "https://picsum.photos/seed/picsum6/420/260",
+      "price": "1299",
+      "id": 15
+    },
+    {
+      "title": "Chara UI T-Shirt",
+      "category": "shirt",
+      "gender": "male",
+      "imageSrc": "https://picsum.photos/seed/picsum6/420/260",
+      "price": "999",
+      "id": 16
     }
   ]
 }

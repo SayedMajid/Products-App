@@ -13,8 +13,15 @@ const Products = () => {
   const [price, setPrice] = useState("");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(3);
+  const [total, setTotal] = useState([]);
 
   const toast = useToast();
+
+  const getAllData = () => {
+    axios
+      .get(`http://localhost:8080/products`)
+      .then((res) => setTotal(res.data));
+  };
 
   const getData = () => {
     axios
@@ -59,13 +66,18 @@ const Products = () => {
     setPage((prev) => prev - 1);
   };
 
+  const changeLimit = (e) => {
+    const query = Number(e.target.value);
+    setLimit(query);
+  };
+
   useEffect(() => {
     getData();
+    getAllData();
+
 
     return () => {};
   }, [page, limit]);
-
-  console.log(data);
 
   return (
     <Flex
@@ -107,6 +119,9 @@ const Products = () => {
         incPage={incPage}
         decPage={decPage}
         setPage={setPage}
+        changeLimit={changeLimit}
+        total={total}
+        limit={limit}
       />
     </Flex>
   );

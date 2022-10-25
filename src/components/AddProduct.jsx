@@ -105,7 +105,10 @@ const AddProduct = ({
             <Button
               variant="outline"
               colorScheme="green"
-              onClick={() => addProduct()}
+              onClick={() => {
+                addProduct();
+                onClose();
+              }}
               disabled={
                 title === "" || category === "" || gender === "" || price === ""
               }
